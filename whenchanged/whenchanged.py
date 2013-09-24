@@ -19,7 +19,7 @@ class WhenChanged(pyinotify.ProcessEvent):
 
     def __init__(self, files, command, recursive=False):
         self.files = files
-        self.paths = {os.path.realpath(f): f for f in files}
+        self.paths = dict([(os.path.realpath(f), f) for f in files])
         self.command = command
         self.recursive = recursive
 
